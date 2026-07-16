@@ -1,0 +1,6 @@
+## Ignore Visual Studio workspace and build artifacts
+.vs/
+**/obj/
+**/bin/
+*.user
+*.vsidx
