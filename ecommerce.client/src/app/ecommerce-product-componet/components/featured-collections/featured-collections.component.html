@@ -1,0 +1,24 @@
+<section class="benefits-row" aria-label="Shopping benefits">
+  <article class="benefit-item">
+    <span class="benefit-icon">&#128666;</span>
+    <span>Free Shipping</span>
+  </article>
+  <article class="benefit-item">
+    <span class="benefit-icon">&#127873;</span>
+    <span>Special Offers</span>
+  </article>
+  <article class="benefit-item">
+    <span class="benefit-icon">&#128737;</span>
+    <span>Secure Checkout</span>
+  </article>
+</section>
+
+<section class="collections-section">
+  <h2>Featured Collections</h2>
+  <div class="collections-grid">
+    <article class="collection-card" *ngFor="let collection of collections">
+      <img [src]="collection.imageUrl" [alt]="collection.imageAlt" loading="lazy" />
+      <h3>{{ collection.title }}</h3>
+    </article>
+  </div>
+</section>

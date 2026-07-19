@@ -1,0 +1,7 @@
+namespace eCommerce.Server.Application.DTOs.Products;
+
+public class ProductCreateResultDto
+{
+    public int Id { get; set; }
+    public string Slug { get; set; } = string.Empty;
+}

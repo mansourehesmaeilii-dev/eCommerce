@@ -1,0 +1,76 @@
+<div class="home-shell">
+    <header class="top-nav">
+        <div class="brand">ShopLogo</div>
+
+        <nav class="main-nav">
+            <a href="#">Shop</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="nav-actions" aria-label="User actions">
+            <button type="button" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6"></circle>
+                    <path d="m20 20-4-4"></path>
+                </svg>
+            </button>
+            <button type="button" aria-label="Account">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c1.8-3.3 4.5-5 8-5s6.2 1.7 8 5"></path>
+                </svg>
+            </button>
+            <button type="button" aria-label="Cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+                    <circle cx="10" cy="20" r="1.2"></circle>
+                    <circle cx="18" cy="20" r="1.2"></circle>
+                    <path d="M2 3h2l2.1 10.2a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.5L22 6H7"></path>
+                </svg>
+            </button>
+            <button type="button" aria-label="More options" class="more-button">
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=1000&q=80"
+            alt="Beige fashion handbag" class="hero-image" />
+
+        <div class="hero-copy">
+            <h1>Style That Inspires</h1>
+            <p>Discover the latest trends &amp; exclusive deals</p>
+            <button type="button" class="hero-cta">Shop Now</button>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1000&q=80"
+            alt="White casual sneakers" class="hero-image" />
+    </section>
+
+    <section class="benefits-row" aria-label="Shopping benefits">
+        <article class="benefit-item">
+            <span class="benefit-icon">&#128666;</span>
+            <span>Free Shipping</span>
+        </article>
+        <article class="benefit-item">
+            <span class="benefit-icon">&#127873;</span>
+            <span>Special Offers</span>
+        </article>
+        <article class="benefit-item">
+            <span class="benefit-icon">&#128737;</span>
+            <span>Secure Checkout</span>
+        </article>
+    </section>
+
+    <section class="collections-section">
+        <h2>Featured Collections</h2>
+        <div class="collections-grid">
+            <article class="collection-card" *ngFor="let collection of featuredCollections">
+                <img [src]="collection.imageUrl" [alt]="collection.imageAlt" loading="lazy" />
+                <h3>{{ collection.title }}</h3>
+            </article>
+        </div>
+    </section>
+</div>

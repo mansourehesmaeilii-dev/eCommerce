@@ -1,6 +1,8 @@
+using eCommerce.Server.Application.Interfaces;
+
 namespace eCommerce.Server.Infrastructure.Services;
 
-public class ImageUploadService(IWebHostEnvironment env, ILogger<ImageUploadService> logger)
+public class ImageUploadService(IWebHostEnvironment env, ILogger<ImageUploadService> logger) : IImageUploadService
 {
     private static readonly string[] AllowedExtensions = [".jpg", ".jpeg", ".png", ".webp", ".gif"];
     private const long MaxFileSizeBytes = 5 * 1024 * 1024; // 5 MB

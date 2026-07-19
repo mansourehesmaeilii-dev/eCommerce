@@ -1,7 +1,10 @@
 using System.Text;
 using eCommerce.Server.Application.Interfaces;
+using eCommerce.Server.Application.Services;
 using eCommerce.Server.Domain.Entities;
+using eCommerce.Server.Domain.Repositories;
 using eCommerce.Server.Infrastructure.Data;
+using eCommerce.Server.Infrastructure.Repositories;
 using eCommerce.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -55,14 +58,20 @@ builder.Services.AddAuthorization();
 
 // ── App Services ─────────────────────────────────────────────────────────────
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<ImageUploadService>();
+builder.Services.AddSingleton<IRefreshTokenStore, InMemoryRefreshTokenStore>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICartService, CartAppService>();
+builder.Services.AddScoped<IProductService, ProductAppService>();
+builder.Services.AddScoped<IAuthService, AuthAppService>();
+builder.Services.AddScoped<IImageUploadService, ImageUploadService>();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 // ── CORS (allow Angular dev server) ─────────────────────────────────────────
 builder.Services.AddCors(options =>
     options.AddPolicy("AngularDev", policy =>
-        policy.WithOrigins("https://localhost:5206", "http://localhost:4200")
+        policy.WithOrigins("https://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod()));
 

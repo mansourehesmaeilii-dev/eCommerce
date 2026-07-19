@@ -1,3 +1,5 @@
+using eCommerce.Server.Domain.Common;
+
 namespace eCommerce.Server.Domain.Entities;
 
 public class Product
@@ -20,4 +22,58 @@ public class Product
     public Category Category { get; set; } = null!;
 
     public ICollection<ProductImage> Images { get; set; } = [];
+
+    public void UpdateDetails(
+        string name,
+        string slug,
+        string description,
+        decimal price,
+        decimal? compareAtPrice,
+        int stockQuantity,
+        string? brand,
+        string? sku,
+        bool isActive,
+        bool isFeatured,
+        int categoryId)
+    {
+        Name = name;
+        Slug = slug;
+        Description = description;
+        Price = price;
+        CompareAtPrice = compareAtPrice;
+        StockQuantity = stockQuantity;
+        Brand = brand;
+        Sku = sku;
+        IsActive = isActive;
+        IsFeatured = isFeatured;
+        CategoryId = categoryId;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public ProductImage AddImage(string url)
+    {
+        var image = new ProductImage
+        {
+            ProductId = Id,
+            Url = url,
+            AltText = Name,
+            IsPrimary = !Images.Any(),
+            SortOrder = Images.Count
+        };
+
+        Images.Add(image);
+        UpdatedAt = DateTime.UtcNow;
+        return image;
+    }
+
+    public DomainResult RemoveImage(int imageId)
+    {
+        var image = Images.FirstOrDefault(i => i.Id == imageId);
+        if (image is null)
+            return DomainResult.NotFound("Image not found.");
+
+        Images.Remove(image);
+        UpdatedAt = DateTime.UtcNow;
+        return DomainResult.Success();
+    }
 }

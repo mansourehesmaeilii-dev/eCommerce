@@ -1,4 +1,3 @@
-using eCommerce.Server.Application.DTOs.Auth;
 using eCommerce.Server.Domain.Entities;
 
 namespace eCommerce.Server.Application.Interfaces;
